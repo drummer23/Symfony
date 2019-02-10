@@ -67,4 +67,17 @@ class ProductController extends AbstractController
       // return $this->render('product/show.html.twig', ['product' => $product]);
     }
 
+    /**
+     * @Route("/product/price/{price}", name="product_more_expensive")
+     */
+    public function getMoreExpensiveThan($price)
+    {
+      $products = $this->getDoctrine()
+          ->getRepository(Product::class)
+          ->findAllGreaterThanPrice($price);
+
+      return new Response('Products more expensive: '. print_r($products));
+
+    }
+
 }
