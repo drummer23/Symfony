@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Psr\Log\LoggerInterface;
+use App\Service\MessageGenerator;
 
 
 class LuckyController extends AbstractController
@@ -56,6 +57,14 @@ class LuckyController extends AbstractController
       return $this->render('lucky/number.html.twig', [
             'number' => $number,
         ]);
+    }
+
+    /**
+     * @Route("/lucky/message", name="message")
+     */
+    public function message(MessageGenerator $generator)
+    {
+      return new Response($generator->randomBitchyMessage());
     }
 
 }
