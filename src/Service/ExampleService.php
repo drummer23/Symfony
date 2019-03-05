@@ -2,10 +2,17 @@
 
 namespace App\Service;
 
-class MessageGenerator
+/**
+ * Class ExampleService
+ * @package App\Service
+ */
+class ExampleService
 {
 
-  public function randomBitchyMessage()
+    /**
+     * @return string
+     */
+    public function randomBitchyMessage() : string
   {
     $messages = [
       "Fine",
